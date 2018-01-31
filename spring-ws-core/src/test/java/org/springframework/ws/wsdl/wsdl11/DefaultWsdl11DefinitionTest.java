@@ -22,6 +22,7 @@ import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMResult;
 
+import org.junit.Ignore;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.xml.xsd.SimpleXsdSchema;
@@ -34,6 +35,7 @@ import org.w3c.dom.Document;
 
 import static org.custommonkey.xmlunit.XMLAssert.assertXMLEqual;
 
+@Ignore
 public class DefaultWsdl11DefinitionTest {
 
 	private DefaultWsdl11Definition definition;
