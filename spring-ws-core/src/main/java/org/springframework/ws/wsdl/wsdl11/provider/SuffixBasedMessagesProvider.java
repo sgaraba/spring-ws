@@ -29,7 +29,7 @@ import org.springframework.util.Assert;
 public class SuffixBasedMessagesProvider extends DefaultMessagesProvider {
 
 	/** The default suffix used to detect request elements in the schema. */
-	public static final String DEFAULT_REQUEST_SUFFIX = "Request";
+	public static final String DEFAULT_REQUEST_SUFFIX = "";
 
 	/** The default suffix used to detect response elements in the schema. */
 	public static final String DEFAULT_RESPONSE_SUFFIX = "Response";
@@ -58,7 +58,7 @@ public class SuffixBasedMessagesProvider extends DefaultMessagesProvider {
 	 * @see #DEFAULT_REQUEST_SUFFIX
 	 */
 	public void setRequestSuffix(String requestSuffix) {
-		Assert.hasText(requestSuffix, "'requestSuffix' must not be empty");
+		//Assert.hasText(requestSuffix, "'requestSuffix' must not be empty");
 		this.requestSuffix = requestSuffix;
 	}
 
@@ -77,7 +77,7 @@ public class SuffixBasedMessagesProvider extends DefaultMessagesProvider {
 	 * @see #DEFAULT_RESPONSE_SUFFIX
 	 */
 	public void setResponseSuffix(String responseSuffix) {
-		Assert.hasText(responseSuffix, "'responseSuffix' must not be empty");
+		//Assert.hasText(responseSuffix, "'responseSuffix' must not be empty");
 		this.responseSuffix = responseSuffix;
 	}
 

@@ -19,6 +19,7 @@ package org.springframework.ws.wsdl.wsdl11.provider;
 import javax.wsdl.Message;
 
 import org.springframework.util.Assert;
+import org.springframework.util.StringUtils;
 
 /**
  * Implementation of the {@link	 PortTypesProvider} interface that is based on suffixes.
@@ -29,7 +30,7 @@ import org.springframework.util.Assert;
 public class SuffixBasedPortTypesProvider extends AbstractPortTypesProvider {
 
 	/** The default suffix used to detect request elements in the schema. */
-	public static final String DEFAULT_REQUEST_SUFFIX = "Request";
+	public static final String DEFAULT_REQUEST_SUFFIX = "";
 
 	/** The default suffix used to detect response elements in the schema. */
 	public static final String DEFAULT_RESPONSE_SUFFIX = "Response";
@@ -58,7 +59,7 @@ public class SuffixBasedPortTypesProvider extends AbstractPortTypesProvider {
 	 * @see #DEFAULT_REQUEST_SUFFIX
 	 */
 	public void setRequestSuffix(String requestSuffix) {
-		Assert.hasText(requestSuffix, "'requestSuffix' must not be empty");
+		//Assert.hasText(requestSuffix, "'requestSuffix' must not be empty");
 		this.requestSuffix = requestSuffix;
 	}
 
@@ -77,7 +78,7 @@ public class SuffixBasedPortTypesProvider extends AbstractPortTypesProvider {
 	 * @see #DEFAULT_RESPONSE_SUFFIX
 	 */
 	public void setResponseSuffix(String responseSuffix) {
-		Assert.hasText(responseSuffix, "'responseSuffix' must not be empty");
+		//Assert.hasText(responseSuffix, "'responseSuffix' must not be empty");
 		this.responseSuffix = responseSuffix;
 	}
 
@@ -104,7 +105,7 @@ public class SuffixBasedPortTypesProvider extends AbstractPortTypesProvider {
 	protected String getOperationName(Message message) {
 		String messageName = getMessageName(message);
 		if (messageName != null) {
-			if (messageName.endsWith(getRequestSuffix())) {
+			if (messageName.endsWith(getRequestSuffix()) && !messageName.endsWith(getResponseSuffix())) {
 				return messageName.substring(0, messageName.length() - getRequestSuffix().length());
 			}
 			else if (messageName.endsWith(getResponseSuffix())) {
@@ -129,7 +130,7 @@ public class SuffixBasedPortTypesProvider extends AbstractPortTypesProvider {
 	@Override
 	protected boolean isInputMessage(Message message) {
 		String messageName = getMessageName(message);
-		return messageName != null && messageName.endsWith(getRequestSuffix());
+		return messageName != null && messageName.endsWith(getRequestSuffix()) && !messageName.endsWith(getResponseSuffix());
 	}
 
 	/**
@@ -148,7 +149,7 @@ public class SuffixBasedPortTypesProvider extends AbstractPortTypesProvider {
 	}
 
 	/**
-	 * Indicates whether the given name name should be included as {@link javax.wsdl.Fault} message in the definition.
+	 * Indic`ates whether the given name name should be included as {@link javax.wsdl.Fault} message in the definition.
 	 *
 	 * <p>This implementation checks whether the message name ends with the {@link #setFaultSuffix(String) faultSuffix}.
 	 *

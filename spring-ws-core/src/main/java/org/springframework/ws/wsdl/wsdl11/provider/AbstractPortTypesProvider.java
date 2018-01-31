@@ -99,7 +99,7 @@ public abstract class AbstractPortTypesProvider implements PortTypesProvider {
 			Message message = (Message) iterator.next();
 			String operationName = getOperationName(message);
 			if (StringUtils.hasText(operationName)) {
-				operations.add(operationName,message);
+				operations.add(operationName, message);
 			}
 		}
 		if (operations.isEmpty() && logger.isWarnEnabled()) {
