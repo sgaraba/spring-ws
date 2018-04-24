@@ -164,7 +164,11 @@ public class DefaultConcretePartProvider implements BindingsProvider, ServicesPr
 					bindingOperation.addBindingFault(bindingFault);
 				}
 			}
-			binding.addBindingOperation(bindingOperation);
+
+			if (OperationType.REQUEST_RESPONSE.equals(operation.getStyle()) || OperationType.SOLICIT_RESPONSE.equals(operation.getStyle())) {
+				binding.addBindingOperation(bindingOperation);
+			}
+
 		}
 	}
 

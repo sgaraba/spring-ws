@@ -106,6 +106,9 @@ public abstract class AbstractPortTypesProvider implements PortTypesProvider {
 			logger.warn("No operations were created, make sure the WSDL contains messages");
 		}
 		for (String operationName : operations.keySet()) {
+
+
+
 			Operation operation = definition.createOperation();
 			operation.setName(operationName);
 			List<Message> messages = operations.get(operationName);

@@ -254,6 +254,8 @@ public class Soap11Provider extends DefaultConcretePartProvider {
 				(SOAPOperation) createSoapExtension(definition, BindingOperation.class, "operation");
 		populateSoapOperation(soapOperation, bindingOperation);
 		bindingOperation.addExtensibilityElement(soapOperation);
+
+
 	}
 
 	/**
